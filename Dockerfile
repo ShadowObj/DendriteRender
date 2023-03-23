@@ -1,8 +1,8 @@
 FROM debian:sid
 WORKDIR /data
 EXPOSE 80
-RUN apt-get update\
- && apt -y install nginx postgresql
+RUN apt-get update 2>&1 > /dev/null\
+ && apt -y install nginx postgresql 2>&1 > /dev/null
 RUN psql && su postgres\
  && (createuser -P dendrite;sleep 5;echo 2c1c59f801a84e42bfb12e15d4aadcb1;sleep 5;echo 2c1c59f801a84e42bfb12e15d4aadcb1)\
  && createdb -O dendrite -E UTF-8 dendrite
