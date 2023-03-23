@@ -10,5 +10,5 @@ RUN sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release 
  && sudo -u postgres createdb -O dendrite -E UTF-8 dendrite
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY dendrite /data/
-COPY generate_keys /data/
+COPY generate-keys /data/
 CMD nginx;psql;/data/generate-keys -private-key matrix_key.pem;/data/dendrite
