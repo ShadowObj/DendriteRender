@@ -1,0 +1,6 @@
+services:
+- type: web
+  name: dendrite
+  env: docker
+  dockerfilePath: ./Dockerfile
+  dockerContext: .
