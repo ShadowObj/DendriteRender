@@ -1,7 +1,7 @@
 FROM debian:sid
 WORKDIR /data
 EXPOSE 80
-RUN mkdir /data/pgsql;apt update 2>&1 > /dev/null\
+RUN apt update 2>&1 > /dev/null\
  && apt -y install nginx postgresql
 #2>&1 > /dev/null\
 #RUN su - postgres -s /bin/sh -c "whoami;whereis psql;which psql"\
