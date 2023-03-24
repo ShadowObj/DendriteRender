@@ -6,7 +6,7 @@ RUN apt update > /dev/null 2>&1\
 # && locale -a\
  && su - postgres -s /bin/sh -c "export LANG=en_US.UTF-8;export LC_ALL=en_US.UTF-8;export LC_CTYPE=en_US.UTF-8\
  && /usr/lib/postgresql/15/bin/initdb -D /var/lib/postgresql/data \
- && /usr/lib/postgresql/15/bin/pg_ctl start -D /var/lib/postgresql/data"\
+ && nohup /usr/lib/postgresql/15/bin/pg_ctl start -D /var/lib/postgresql/data > /dev/null 2>&1 &"\
  && su - postgres -s /bin/sh -c "export LANG=en_US.UTF-8;export LC_ALL=en_US.UTF-8;export LC_CTYPE=en_US.UTF-8\
  && createuser dendrite"\
  && su - postgres -s /bin/sh -c "export LANG=en_US.UTF-8;export LC_ALL=en_US.UTF-8;export LC_CTYPE=en_US.UTF-8\
@@ -15,6 +15,6 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY dendrite /data/
 COPY dendrite.yaml /data/
 COPY generate-keys /data/
-CMD nginx && su - portgres -s /bin/sh -c "/usr/lib/postgresql/15/bin/pg_ctl start -D /var/lib/postgresql/data"\
+CMD nginx && su - portgres -s /bin/sh -c "nohup /usr/lib/postgresql/15/bin/pg_ctl start -D /var/lib/postgresql/data > /dev/null 2>&1 &"\
  && /data/generate-keys -private-key matrix_key.pem\
  && /data/dendrite -http-bind-address=0.0.0.0:8008
