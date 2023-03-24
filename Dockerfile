@@ -1,8 +1,7 @@
 FROM debian:sid
 WORKDIR /data
 EXPOSE 80
-RUN mkdir /data/postgres\
- && apt update 2>&1 > /dev/null\
+RUN apt update 2>&1 > /dev/null\
  && apt -y install nginx postgresql 2>&1 > /dev/null\
 # && apt -y install nginx postgresql\
 RUN chown -hR postgres /usr/lib/postgresql/15/
