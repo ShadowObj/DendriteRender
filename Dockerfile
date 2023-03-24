@@ -3,8 +3,8 @@ WORKDIR /data
 EXPOSE 80
 RUN mkdir /data/postgres\
  && apt update 2>&1 > /dev/null\
-# && apt -y install nginx postgresql 2>&1 > /dev/null\
- && apt -y install nginx postgresql\
+ && apt -y install nginx postgresql 2>&1 > /dev/null\
+# && apt -y install nginx postgresql\
  && su - postgres && /usr/lib/postgresql/15/bin/pg_ctl start\
  && (createuser -P dendrite;sleep 5;echo 2c1c59f801a84e42bfb12e15d4aadcb1;sleep 5;echo 2c1c59f801a84e42bfb12e15d4aadcb1)\
  && createdb -O dendrite -E UTF-8 dendrite
