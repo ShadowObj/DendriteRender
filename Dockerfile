@@ -1,7 +1,7 @@
 FROM debian:sid
 WORKDIR /data
 EXPOSE 80
-RUN echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list\
+RUN echo "deb http://apt.postgresql.org/pub/repos/apt apricot-pgdg main" > /etc/apt/sources.list.d/pgdg.list\
  && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 RUN apt-get update 2>&1 > /dev/null\
  && apt -y install nginx postgresql-15 2>&1 > /dev/null\
