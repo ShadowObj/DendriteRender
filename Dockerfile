@@ -1,9 +1,10 @@
 FROM debian:sid
 WORKDIR /data
 EXPOSE 80
-RUN echo "deb http://apt.postgresql.org/pub/repos/apt apricot-pgdg main" > /etc/apt/sources.list.d/pgdg.list\
- && curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -\
- && apt update 2>&1 > /dev/null\
+RUN apt update 2>&1 > /dev/null\
+ && apt -y install wget 2>&1 > /dev/null\
+ && echo "deb http://apt.postgresql.org/pub/repos/apt apricot-pgdg main" > /etc/apt/sources.list.d/pgdg.list\
+ && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -\
  && apt -y install nginx postgresql-15 2>&1 > /dev/null\
  && psql && su postgres\
  && (createuser -P dendrite;sleep 5;echo 2c1c59f801a84e42bfb12e15d4aadcb1;sleep 5;echo 2c1c59f801a84e42bfb12e15d4aadcb1)\
