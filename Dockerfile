@@ -2,14 +2,14 @@ FROM debian:sid
 WORKDIR /data
 EXPOSE 80
 RUN apt update 2>&1 > /dev/null\
- && apt -y install nginx postgresql language-pack-zh-hans language-pack-zh-hant\
+ && apt -y install nginx postgresql\
  && su - postgres -s /bin/sh -c "export LANG=en_US.UTF-8;export LC_ALL=en_US.UTF-8;export LC_CTYPE=en_US.UTF-8\
  && /usr/lib/postgresql/15/bin/initdb -D /var/lib/postgresql/data \
  && /usr/lib/postgresql/15/bin/pg_ctl start -D /var/lib/postgresql/data"\
  && su - postgres -s /bin/sh -c "export LANG=en_US.UTF-8;export LC_ALL=en_US.UTF-8;export LC_CTYPE=en_US.UTF-8\
  && (createuser -P dendrite;sleep 5;echo 2c1c59f801a84e42bfb12e15d4aadcb1;sleep 5;echo 2c1c59f801a84e42bfb12e15d4aadcb1;sleep 1)"\
  && su - postgres -s /bin/sh -c "export LANG=en_US.UTF-8;export LC_ALL=en_US.UTF-8;export LC_CTYPE=en_US.UTF-8\
- && createdb -O dendrite -E UTF-8 dendrite"
+ && createdb -O dendrite -E en_US.UTF-8 dendrite"
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY dendrite /data/
 COPY dendrite.yaml /data/
