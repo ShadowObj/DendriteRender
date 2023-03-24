@@ -1,7 +1,7 @@
 FROM debian:sid
 WORKDIR /data
 EXPOSE 80
-RUN mkdir /data && mkdir /data/postgres\
+RUN mkdir /data/postgres\
  && apt update 2>&1 > /dev/null\
  && apt -y install nginx postgresql-15 2>&1 > /dev/null\
  && su - postgres && pg_ctl start -D /data/postgres\
