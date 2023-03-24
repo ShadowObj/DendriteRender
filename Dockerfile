@@ -1,8 +1,9 @@
 FROM debian:sid
 WORKDIR /data
 EXPOSE 80
-RUN apt update 2>&1 > /dev/null\
- && apt -y install nginx postgresql\
+RUN apt update -q\
+ && apt -y -q install nginx postgresql\
+ && locale -a\
  && su - postgres -s /bin/sh -c "export LANG=en_US.UTF-8;export LC_ALL=en_US.UTF-8;export LC_CTYPE=en_US.UTF-8\
  && /usr/lib/postgresql/15/bin/initdb -D /var/lib/postgresql/data \
  && /usr/lib/postgresql/15/bin/pg_ctl start -D /var/lib/postgresql/data"\
