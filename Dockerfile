@@ -1,4 +1,4 @@
-FROM debian:sid
+FROM debian:latest
 WORKDIR /data
 EXPOSE 80
 RUN apt update 2>&1 > /dev/null\
