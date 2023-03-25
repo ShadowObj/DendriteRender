@@ -41,7 +41,7 @@ global:
   # sections. For monolith deployments using SQLite databases,
   # you must configure the "database" block for each component instead.
   database:
-    connection_string: postgresql://dendrite:@127.0.0.1/dendrite?sslmode=disable
+    connection_string: postgresql://dendrite:2c1c59f801a84e42bfb12e15d4aadcb1@localhost/dendrite?sslmode=disable
     max_open_conns: 30
     max_idle_conns: 5
     conn_max_lifetime: -1
@@ -159,7 +159,7 @@ app_service_api:
 client_api:
   # Prevents new users from being able to register on this homeserver, except when
   # using the registration shared secret below.
-  registration_disabled: false
+  registration_disabled: true
 
   # Prevents new guest accounts from being created. Guest registration is also
   # disabled implicitly by setting 'registration_disabled' above.
@@ -216,7 +216,7 @@ federation_api:
   # backoff is 2**x seconds, so 1 = 2 seconds, 2 = 4 seconds, 3 = 8 seconds etc. Once
   # the max retries are exceeded, Dendrite will no longer try to send transactions to
   # that server until it comes back to life and connects to us again.
-  send_max_retries: 16
+  send_max_retries: 8
 
   # Disable the validation of TLS certificates of remote federated homeservers. Do not
   # enable this option in production as it presents a security risk!
@@ -307,7 +307,7 @@ user_api:
   # of security should the database be compromised. Setting this higher makes registration/login
   # consume more CPU resources but makes it harder to brute force password hashes. This value
   # can be lowered if performing tests or on embedded Dendrite instances (e.g WASM builds).
-  bcrypt_cost: 10
+  bcrypt_cost: 8
 
   # The length of time that a token issued for a relying party from
   # /_matrix/client/r0/user/{userId}/openid/request_token endpoint
