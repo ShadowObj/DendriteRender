@@ -16,6 +16,7 @@ COPY dendrite /data/
 COPY dendrite.yaml /data/
 COPY generate-keys /data/
 CMD cp /data/nginx/nginx.conf /etc/nginx/nginx.conf\
- && nginx && su - postgres -c "/usr/lib/postgresql/15/bin/pg_ctl -D /var/lib/postgresql/data -l /dev/null start"\
+# && nginx\
+ && su - postgres -c "/usr/lib/postgresql/15/bin/pg_ctl -D /var/lib/postgresql/data -l /dev/null start"\
  && /data/generate-keys -private-key matrix_key.pem\
- && /data/dendrite -http-bind-address=:8008
+ && /data/dendrite -http-bind-address=:80
