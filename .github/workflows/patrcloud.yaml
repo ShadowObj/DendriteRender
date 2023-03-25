@@ -7,9 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
     - name: SetUpDockerEnv
+      uses: crazy-max/ghaction-setup-docker@v1.1.0
+    - name: Checkout
+      uses: actions/checkout@v2.7.0
+    - name: Build,Login,Push
       run: |
-        sudo apt install -y wget git
-        wget -q https://golang.google.cn/dl/go1.19.5.linux-amd64.tar.gz
-        sudo tar -C /usr/local -xzf go1.19.5.linux-amd64.tar.gz
-        /usr/local/go/bin/go version
-
+        cd DendriteRender
+        docker login registry.patr.cloud -u ${{ secrets.USER }} -p ${{ secrets.TOKEN }}
+        docker build . -t registry.patr.cloud/6a57ffe37679493b9497ccdad368e83c/dendrite
+        docker push registry.patr.cloud/6a57ffe37679493b9497ccdad368e83c/dendrite
