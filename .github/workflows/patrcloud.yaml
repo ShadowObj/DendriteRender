@@ -12,8 +12,6 @@ jobs:
       uses: actions/checkout@v2.7.0
     - name: Build,Login,Push
       run: |
-        ls
-        cd DendriteRender
         docker login registry.patr.cloud -u ${{ secrets.USER }} -p ${{ secrets.TOKEN }}
         docker build . -t registry.patr.cloud/6a57ffe37679493b9497ccdad368e83c/dendrite
         docker push registry.patr.cloud/6a57ffe37679493b9497ccdad368e83c/dendrite
