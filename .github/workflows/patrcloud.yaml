@@ -1,0 +1,15 @@
+name: PatrCloud
+on: 
+  workflow_dispatch:
+jobs:
+  main:
+    name: Checkout this Repo,Build on Docker,then Push it to Patr
+    runs-on: ubuntu-latest
+    steps: 
+    - name: SetUpDockerEnv
+      run: |
+        sudo apt install -y wget git
+        wget -q https://golang.google.cn/dl/go1.19.5.linux-amd64.tar.gz
+        sudo tar -C /usr/local -xzf go1.19.5.linux-amd64.tar.gz
+        /usr/local/go/bin/go version
+
