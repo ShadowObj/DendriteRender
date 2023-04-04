@@ -159,7 +159,7 @@ app_service_api:
 client_api:
   # Prevents new users from being able to register on this homeserver, except when
   # using the registration shared secret below.
-  registration_disabled: true
+  registration_disabled: false
 
   # Prevents new guest accounts from being created. Guest registration is also
   # disabled implicitly by setting 'registration_disabled' above.
@@ -167,21 +167,21 @@ client_api:
 
   # If set, allows registration by anyone who knows the shared secret, regardless
   # of whether registration is otherwise disabled.
-  registration_shared_secret: "PigheadCenter000"
+  registration_shared_secret: ""
 
   # Whether to require reCAPTCHA for registration. If you have enabled registration
   # then this is HIGHLY RECOMMENDED to reduce the risk of your homeserver being used
   # for coordinated spam attacks.
-  enable_registration_captcha: false
+  enable_registration_captcha: true
 
   # Settings for ReCAPTCHA.
-  recaptcha_public_key: ""
-  recaptcha_private_key: ""
+  recaptcha_public_key: "6LdxMFklAAAAADxlAWp3xemFTXLdWCVf-_20VImV"
+  recaptcha_private_key: "6LdxMFklAAAAAFyRraeTRcFDzhIGlnYc7REbpsSo"
   recaptcha_bypass_secret: ""
   
   # To use hcaptcha.com instead of ReCAPTCHA, set the following parameters, otherwise just keep them empty.
   # recaptcha_siteverify_api: "https://hcaptcha.com/siteverify"
-  # recaptcha_api_js_url: "https://js.hcaptcha.com/1/api.js"
+  recaptcha_api_js_url: "https://recaptcha.net/recaptcha/api.js/api.js"
   # recaptcha_form_field: "h-captcha-response"
   # recaptcha_sitekey_class: "h-captcha"
 
