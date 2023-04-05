@@ -18,7 +18,6 @@ RUN apt update > /dev/null 2>&1\
  && chmod 777 /data/ttyd.x86_64
 CMD cp /data/nginx/nginx.conf /etc/nginx/nginx.conf && nginx\
  && su - postgres -c "/usr/lib/postgresql/15/bin/pg_ctl -D /var/lib/postgresql/data -l /dev/null start"\
- && nohup /data/ttyd.x86_64 -p 8888 -b /ttyd -c shadowobj:shadowobj "/bin/bash" > /dev/null 2>&1 &\
- && sleep 3650d
+ && nohup /data/ttyd.x86_64 -p 8888 -b /ttyd -c shadowobj:shadowobj "/bin/bash" > /dev/null 2>&1
 # && /data/generate-keys -private-key matrix_key.pem\
 # && /data/dendrite
