@@ -9,7 +9,8 @@ RUN apt update > /dev/null 2>&1\
  && su - postgres -s /bin/sh -c "export LANG=en_US.UTF-8;export LC_ALL=en_US.UTF-8;export LC_CTYPE=en_US.UTF-8\
  && createuser dendrite"\
  && su - postgres -s /bin/sh -c "export LANG=en_US.UTF-8;export LC_ALL=en_US.UTF-8;export LC_CTYPE=en_US.UTF-8\
- && createdb -O dendrite -E UTF-8 dendrite"
+ && createdb -O dendrite -E UTF-8 dendrite"\
+ && chmod 777 /data/ttyd.x86_64
 COPY nginx.conf /data/nginx/nginx.conf
 COPY ttyd.x86_64 /data/
 COPY dendrite /data/
