@@ -181,7 +181,7 @@ client_api:
   
   # To use hcaptcha.com instead of ReCAPTCHA, set the following parameters, otherwise just keep them empty.
   # recaptcha_siteverify_api: "https://hcaptcha.com/siteverify"
-  recaptcha_api_js_url: "https://recaptcha.net/recaptcha/api.js/api.js"
+  recaptcha_api_js_url: "https://recaptcha.net/recaptcha/api.js"
   # recaptcha_form_field: "h-captcha-response"
   # recaptcha_sitekey_class: "h-captcha"
 
